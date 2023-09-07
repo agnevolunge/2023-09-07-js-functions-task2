@@ -21,33 +21,36 @@ function convertDays(numberOfDays, formatOfVariable){
 
     let minutes = numberOfDays * 24 * 60
     let hours = numberOfDays * 24
-    let weeks = numberOfDays / 7
-    let months = numberOfDays / 30
-    let years = numberOfDays / 365
+    let weeks = (numberOfDays / 7).toFixed(1)
+    let months = (numberOfDays / 30).toFixed(2)
+    let years = (numberOfDays / 365).toFixed(3)
 
-    let output = ''
+    let output = ``
 
-    if (formatOfVariable == minutes){
+    if (formatOfVariable === `minutes`){
     output = `${numberOfDays} days - ${minutes} minutes.`
-
-    } else if (formatOfVariable == hours) {
+    }
+    if (formatOfVariable === `hours`) {
         output = `${numberOfDays} days - ${hours} hours.`
-
-    } else if (formatOfVariable == weeks) {
+    } 
+    if (formatOfVariable === `weeks`) {
         output = `${numberOfDays} days - ${weeks} weeks.`
-
-    } else if (formatOfVariable == months) {
+    }
+    if (formatOfVariable === `months`) {
         output = `${numberOfDays} days - ${months} months.`
-
-    } else {
+    }
+    if (formatOfVariable === `years`) {
         output = `${numberOfDays} days - ${years} years.`
     } 
 
     return output
 
 }
-
-    console.log(convertDays(5, 'hours'))
+    console.log(convertDays(5, `minutes`))
+    console.log(convertDays(5, `hours`))
+    console.log(convertDays(5, `weeks`))
+    console.log(convertDays(5, `months`))
+    console.log(convertDays(5, `years`))
 
 // 9. Funkciją, kuri patikrina ar skaičius dalinasi iš kito skaičiaus:
 // 9.1. Funkcija priima du argumentus:
@@ -56,6 +59,18 @@ function convertDays(numberOfDays, formatOfVariable){
 // 9.2. Funkcija grąžina atsakymą tokiu formatu:
 //   9.2.1. Jeigu dalinasi: 10 dalinasi iš 5.
 //   9.2.2. Skaičius 11 nesidalina iš 5. Liekana yra 1.
+
+// function division(unit, divisor){
+//     let unit = divideUnit % divisor
+//     let divisor = 5
+
+
+//     output = `${unit} dalinasi iš ${divisor}`
+
+//     return output
+// }
+
+// console.log(division(10, 5))
 
 // 10. Funkciją, kuri patikrina ar įvestas tekstas turi porini raidžių skaičių ar neporinį.
 
