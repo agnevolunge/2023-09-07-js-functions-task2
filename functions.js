@@ -16,41 +16,56 @@ console.log('veikia')
 
 function convertDays(numberOfDays, formatOfVariable){
     // console.log(numberOfDays)
-    // console.log('formatOfVariable')
+    // console.log(formatOfVariable)
     
 
-    let minutes = numberOfDays * 24 * 60
-    let hours = numberOfDays * 24
-    let weeks = (numberOfDays / 7).toFixed(1)
-    let months = (numberOfDays / 30).toFixed(2)
-    let years = (numberOfDays / 365).toFixed(3)
-
-    let output = ``
+    if (isNaN(numberOfDays)){
+        return `neteisingai nurodytas dienų skaičius`
+    }
 
     if (formatOfVariable === `minutes`){
-    output = `${numberOfDays} days - ${minutes} minutes.`
+        let minutes = numberOfDays * 24 * 60
+    
+        return `${numberOfDays} days - ${minutes} minutes.`
     }
+
     if (formatOfVariable === `hours`) {
-        output = `${numberOfDays} days - ${hours} hours.`
+        let hours = numberOfDays * 24
+        
+        return `${numberOfDays} days - ${hours} hours.`
     } 
+    
     if (formatOfVariable === `weeks`) {
-        output = `${numberOfDays} days - ${weeks} weeks.`
+        let weeks = (numberOfDays / 7).toFixed(1)
+
+        return `${numberOfDays} days - ${weeks} weeks.`
     }
+
     if (formatOfVariable === `months`) {
-        output = `${numberOfDays} days - ${months} months.`
+        let months = (numberOfDays / 30).toFixed(2) 
+
+        return `${numberOfDays} days - ${months} months.`
     }
+
     if (formatOfVariable === `years`) {
-        output = `${numberOfDays} days - ${years} years.`
+        let years = (numberOfDays / 365).toFixed(3)
+
+        return `${numberOfDays} days - ${years} years.`
     } 
 
-    return output
-
+    if (formatOfVariable === ``){
+       return `Nurodytas formatas yra netinkamas. Galima rinktis iš minutes, hours, weeks, months, years`
+    }
 }
+
     console.log(convertDays(5, `minutes`))
     console.log(convertDays(5, `hours`))
     console.log(convertDays(5, `weeks`))
     console.log(convertDays(5, `months`))
     console.log(convertDays(5, `years`))
+    console.log(convertDays(5, ``))
+    console.log(convertDays('desimt', `minutes`))
+
 
 // 9. Funkciją, kuri patikrina ar skaičius dalinasi iš kito skaičiaus:
 // 9.1. Funkcija priima du argumentus:
@@ -79,9 +94,27 @@ console.log(division(11, 5))
 
 // 10. Funkciją, kuri patikrina ar įvestas tekstas turi porini raidžių skaičių ar neporinį.
 
+// function checkText(string){
+
+//     let stringLength = str.length
+
+//     console.log(string)
+//     console.log(string.length)
+//     if (string.length % 2 === 0) {
+//         return 'Tekstas '${string}' turi porinį simbolių kiekį'
+//     }
+//     return 'Tekstas '${string}' turi neporinį simbolių kiekį'
+// }
+
+// checkText('labas')
+
+
 // 11. Funkciją, kuri paima nurodytą simbolį iš žodžio ar sakinio.
 //   11.1. Funkcija priima du argumentus: tekstą ir kelintą simbolį reikia grąžinti.
 //   11.2. Funkcija grąžina atsakymą tokiu formatu: Teksto "Labas" 3 raidė yra "b".
+
+
+//raides skaiciuoja nuo 0. tarkim labas "b" yra 4 raide . Tad jei norim, kad ziuretu 3cia raide, reikia nurodyti, kad pvz. symbolIndex = num(raides numeris) - 1, o jau musu pasirinkta raide selectedSymbol = str(musu stringo,teksto)[symbolIndex] (lauztiniuose skliaustuose rasomas numeris)
 
 //   11.3. Jeigu nurodytas skaičius yra didesnis nei tekstas turi simbolių, tai reikia grąžinti error'ą tokiu formatu: Tekstas "Labas" turi 5 simbolius, o jūs nurodėte grąžinti 8.
 
