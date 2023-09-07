@@ -60,17 +60,22 @@ function convertDays(numberOfDays, formatOfVariable){
 //   9.2.1. Jeigu dalinasi: 10 dalinasi iš 5.
 //   9.2.2. Skaičius 11 nesidalina iš 5. Liekana yra 1.
 
-// function division(unit, divisor){
-//     let unit = divideUnit % divisor
-//     let divisor = 5
+function division(unit, divisor){
+    let remainder = unit % divisor 
+    let output = ''
 
 
-//     output = `${unit} dalinasi iš ${divisor}`
+    if (unit % divisor === 0) {
+        output = `${unit} dalinasi iš ${divisor}.`
+    } else {
+        output = `Skaičius ${unit} nesidalina iš ${divisor}. Liekana yra ${remainder}.`
+    }
 
-//     return output
-// }
+    return output
+}
 
-// console.log(division(10, 5))
+console.log(division(10, 5))
+console.log(division(11, 5))
 
 // 10. Funkciją, kuri patikrina ar įvestas tekstas turi porini raidžių skaičių ar neporinį.
 
