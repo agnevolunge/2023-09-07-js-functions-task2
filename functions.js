@@ -66,6 +66,67 @@ function convertDays(numberOfDays, formatOfVariable){
     console.log(convertDays(5, ``))
     console.log(convertDays('desimt', `minutes`))
 
+    // ROMANO KODAS no8
+
+    // PIRMAS VARIANTAS 
+
+    // function convertDays(days, format) {
+//   if (format === 'minutes') {
+//     let minutes = days * 24 * 60
+//     return `${days} days - ${minutes} minutes.`
+//   } else if (format === 'hours') {
+//     let hours = days * 24
+//     return `${days} days - ${hours} hours.`
+//   } else if (format === 'weeks') {
+//     let weeks = (days / 7).toFixed(2)
+//     return `${days} days - ${weeks} weeks.`
+//   } else if (format === 'months') {
+//     let months = (days / 30).toFixed(2)
+//     return `${days} days - ${months} months.`
+//   } else if (format === 'years') {
+//     let years = (days / 365).toFixed(2)
+//     return `${days} days - ${years} years.`
+//   }
+// }
+
+    // ANTRAS VARIANTAS 
+
+// function convertDays(days, format) {
+//     if (isNaN(days)) {
+//       return 'Neteisingai nurodytas dienų skaičius.'
+//     }
+  
+//     if (format === 'minutes') {
+//       let minutes = days * 24 * 60
+//       return `${days} days - ${minutes} ${format}.`
+//     }
+    
+//     if (format === 'hours') {
+//       let hours = days * 24
+//       return `${days} days - ${hours} ${format}.`
+//     }
+    
+//     if (format === 'weeks') {
+//       let weeks = (days / 7).toFixed(2)
+//       return `${days} days - ${weeks} ${format}.`
+//     }
+    
+//     if (format === 'months') {
+//       let months = (days / 30).toFixed(2)
+//       return `${days} days - ${months} ${format}.`
+//     }
+    
+//     if (format === 'years') {
+//       let years = (days / 365).toFixed(2)
+//       return `${days} days - ${years} ${format}.`
+//     }
+  
+//     return 'Nurodytas formatas yra netinkamas. Galima rinktis iš: minutes, hours, weeks, months, years.'
+//   }
+  
+//   console.log(convertDays(45, 'years'))
+//   console.log(convertDays('labas', 'minutes'))
+//   console.log(convertDays(45))
 
 // 9. Funkciją, kuri patikrina ar skaičius dalinasi iš kito skaičiaus:
 // 9.1. Funkcija priima du argumentus:
@@ -77,36 +138,52 @@ function convertDays(numberOfDays, formatOfVariable){
 
 function division(unit, divisor){
     let remainder = unit % divisor 
-    let output = ''
-
 
     if (unit % divisor === 0) {
-        output = `${unit} dalinasi iš ${divisor}.`
+        return `${unit} dalinasi iš ${divisor}.`
     } else {
-        output = `Skaičius ${unit} nesidalina iš ${divisor}. Liekana yra ${remainder}.`
+        return `Skaičius ${unit} nesidalina iš ${divisor}. Liekana yra ${remainder}.`
     }
-
-    return output
+ 
 }
 
 console.log(division(10, 5))
-console.log(division(11, 5))
+console.log(division(18, 5))
+
+// ROMANO KODAS No 9
+
+// function checkNumber(unit, divisor) {
+//     let answer = unit % divisor
+  
+//     if (answer === 0) {
+//       return `${unit} dalinasi iš ${divisor}.`
+//     } 
+    
+//     return `Skaičius ${unit} nesidalina iš ${divisor}. Liekana yra ${answer}.`
+//   }
+  
+//   console.log(checkNumber(15, 5))
+
 
 // 10. Funkciją, kuri patikrina ar įvestas tekstas turi porini raidžių skaičių ar neporinį.
 
-// function checkText(string){
+    function checkText(str) {
 
-//     let stringLength = str.length
+    console.log(str)    
 
-//     console.log(string)
-//     console.log(string.length)
-//     if (string.length % 2 === 0) {
-//         return 'Tekstas '${string}' turi porinį simbolių kiekį'
-//     }
-//     return 'Tekstas '${string}' turi neporinį simbolių kiekį'
-// }
+    if (typeof str !== 'string') {
+    return `ERROR: Įvesti duomenys nėra tekstas.`
+    }
 
-// checkText('labas')
+    let strLength = str.length
+
+    if (strLength % 2 === 0) {
+        return `Tekstas ${str} turi porinį simbolių kiekį.`
+    }
+    return `Tekstas ${str} turi neporinį simbolių kiekį.`
+    }
+
+    console.log(checkText('car'))
 
 
 // 11. Funkciją, kuri paima nurodytą simbolį iš žodžio ar sakinio.
@@ -119,3 +196,40 @@ console.log(division(11, 5))
 //   11.3. Jeigu nurodytas skaičius yra didesnis nei tekstas turi simbolių, tai reikia grąžinti error'ą tokiu formatu: Tekstas "Labas" turi 5 simbolius, o jūs nurodėte grąžinti 8.
 
 //   11.4. Patobulinti funkciją, kad būtų galima įrašyti neigiamą skaičių, jeigu norima gauti teksto simbolį skaičiuojant nuo jo galo, o ne nuo priekio.
+
+function getSymbol(str, symbolNum) {
+
+if (symbolNum === 0) {
+    return `Reikia ivesti teigiama arba neigiama skaiciu.`
+}
+
+let strLength = str.length
+
+let convertedNum = symbolNum < 0 ? symbolNum * -1 : symbolNum
+
+if (strLength < symbolNum) {
+    return `Tekstas "${str}" turi ${strLength} simbolius, o jūs nurodėte grąžinti ${symbolNum}. `
+}
+if (strLength < convertedNum) {
+    return `Tekstas "${str}" turi ${strLength} simbolius, o jūs nurodėte grąžinti ${convertedNum}.` 
+}
+if (symbolNum < 0) {
+    // let symbolIndexBack = strLength + symbolNum // prideti, nes kai skaicius minusinis ir atimame, gaunasi pliusas
+    // let selectedBackSymbol = str[symbolIndexBack]
+
+    let selectedBackSymbol = str.at(symbolNum)
+
+    return `Teksto "${str}" ${convertedNum} simbolis nuo galo yra "${selectedBackSymbol}"`
+}
+
+let symbolIndex = symbolNum - 1
+// let selectedSymbol = str[symbolIndex]
+
+// let selectedSymbol = str.charAt(symbolIndex)
+let selectedSymbol = str.at(symbolIndex) //geras metodas isskaiciuoti raides, nes reiksme galima rasyti tiek teigiama, tiek neigiama.
+
+return `Teksto "${str}" ${symbolIndexBack} simbolis yra "${selectedSymbol}"`
+
+}
+
+console.log(getSymbol('sveikas', -4))
